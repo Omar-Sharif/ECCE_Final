@@ -1,0 +1,85 @@
+\documentclass[conference]{IEEEtran}
+%\hyphenation{op-tical net-works semi-conduc-tor}
+\usepackage[bibstyle=ieee, citestyle=numeric-comp]{biblatex}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{color}
+\usepackage{gensymb}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{mathtools}
+\usepackage[thinlines]{easytable}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\usepackage[toc,page]{appendix}
+\usepackage{setspace}
+\usepackage{biblatex}
+\addbibresource{ref.bib}
+\captionsetup[figure]{labelfont={bf},labelformat={default},labelsep=period,name={Fig.}}
+\addbibresource{ref.bib}
+\renewcommand\IEEEkeywordsname{Keywords}
+
+\begin{document}
+
+\title{Suspicious Bangla Text Detection Using\\ Machine Learning}
+
+\author{\IEEEauthorblockN{\textbf{Omar Sharif}}
+\IEEEauthorblockA{Dept. of Computer Science \& Engineering\\
+Chittagong University of Engineering and Technology\\
+Chittagong-4349, Bangladesh\\
+Email: omar.shaif1303@gmail.com}
+\and
+\IEEEauthorblockN{\textbf{Mohammed Moshiul Hoque}}
+\IEEEauthorblockA{Professor, Department of CSE\\
+Chittagong University of Engineering and Technology\\
+Chittagong-4349, Bangladesh\\
+Email: moshiulh@yahoo.com}}
+
+
+\maketitle
+
+%%%%%%% Abstract and Keyword section %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Abstract.tex}
+
+\IEEEpeerreviewmaketitle
+
+%%%%%%%%%% Introduction %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Introduction.tex}
+
+%%%%%%%%%% Related Work %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{RelatedWork.tex}
+
+%%%%%%%%% Methodology %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Methdology.tex}
+
+%%%%%%%%% Experiments %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Experiments.tex}
+
+%%%%%%%% Evaluation Measures %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{EvaluationMeasures.tex}
+
+%%%%%%% Experimental Results %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{ExperimentalResults.tex}
+
+%%%% Conclusion and Future Improvement %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Conclusion.tex}
+
+
+\renewcommand{\bibfont}{\normalfont\small}
+\printbibliography
+
+\end{document}
+
+
