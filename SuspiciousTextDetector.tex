@@ -3,80 +3,94 @@ The key objective of our project is to design a system that can classify suspici
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[scale=0.365]{Figures/proposed_model.PNG}
+  \includegraphics[height=6.8cm, width=8.8cm]{Figures/pr_model.PNG}
   \caption{ Model for Suspicious Text Detection}
   \label{fig:proposed_model}
 \end{figure}
 
-We have implemented this system by using different supervised machine learning algorithms. As a supervised classification problem, our whole system is classified into two phases one is training phase and another is testing phase.
-\subsection{\textbf {Training Phase}}
-In training set each document is labeled as either suspicious or non suspicious. Training phase of suspicious text detector includes five steps:
-\subsubsection{\textbf{Training Set Preparation}}
-Training set is divided into positive set (suspicious texts) and negative set (non suspicious texts).
-\subsubsection{\textbf{Text Preprocessing}}
-All texts are preprocessed by the preprocessor in order to remove inconsistencies for dataset. In our system the word which has no contribution in deciding whether a text is suspicious or not suspicious is referred as stop word. Such words are removed form the text by matching with a stop word list. 
-\subsubsection{\textbf{Feature Extraction}}
-A word list is created by the tokenizer by tokenizing the main body of a text. Word frequencies is used as features in this system. Bag of words model is used to represent the features. Our feature space is a two dimensional array where rows represents each text of the corpus and columns represents unique words available in the corpus. Each cell of the array represents the number of time a specific word occurs in a specific text.
-\subsubsection{\textbf{Training the Suspicious Text Detector}}
-It is most important part of our whole system. If we able to train our model correctly than the output will be better. Five different machine learning algorithms is used to train our model. 
-\vspace{0.3cm}
+We have implemented this system by using different supervised machine learning algorithms. Our whole model is classified into four different phases.
+\subsection{\textbf {Training Set Preparation}}
+Our training set $T = \{t_1, t_2, t_3, ..., t_n\}$ is consist of $n$ training text documents. Each text is labeled as either suspicious or non suspicious. Suspicious class is denoted by $C_s$ and non suspicious class is denoted by $C_{ns}$.\par
+A random text $t_i$ with $k$ words is represented by an one dimensional array $W[] =\{w_1, w_2, w_3, ....., w_k\}$ in our system,
+\begin{table}[h!]
+\begin{center}
+\caption{Words of a Text}
+\begin{tabular}{|m{1cm} | m{1cm}| m{1cm}|m{1cm} | m{1cm}|}
+\hline
+     $w_1$ & $w_2$  & $w_3$ & $...$ & $w_k$  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
 
+All texts are preprocessed by the preprocessor in order to remove inconsistencies for dataset. We have developed a list $S[]=\{s_1, s_2, s_3, ..., s_r\}$ with $r$ stopwords which is a column vector where each row contains a stop word.\par
+\begin{table}[h!]
+\begin{center}
+\caption{Stop Word List}
+\begin{tabular}{|m{0.7cm}|}
+\hline
+     $s_1$ \\
+\hline
+    $s_2$ \\
+\hline 
+    $s_3$ \\
+\hline
+ $...$ \\
+ \hline
+ $s_r$ \\
+ \hline
+\end{tabular}
+\end{center}
+\end{table}
+\vspace{0.1cm}
+In our system the word $w_i$ which has no contribution in deciding whether a text $t_i$ is suspicious ($C_s$) or not suspicious $(C_{ns})$ is referred as stop word $s_i$. Pronoun, conjunction, preposition, interjection, prefix and suffix are considered as stop words. Stop words $ s_1, s_2, s_3, ..., s_r$ are removed form the text $t_i$ by matching with a stop word list $S[]$. Punctuation's in a text are also removed in preprocessing step.
+
+
+\subsection{\textbf{Feature Extraction}}
+A word list is created by the tokenizer by tokenizing the main body of a text. Word frequencies is used as features in this system. Bag of words model is used to represent the features.
+\renewcommand{\arraystretch}{1.3}
+\begin{table}[h!]
+\begin{center}
+\caption{Feature Space}
+\begin{tabular}{|m{0.7cm} | m{0.7cm}| m{0.7cm}|m{0.7cm} | m{0.7cm}|m{1cm}|m{0.7cm}|}
+\hline
+     & $w_1$ & $w_2$  & $w_3$ &$w_4$ &$...$ & $w_j$  \\
+\hline
+     $t_1$ & $2$ & $0$  & $0$ &$4$ &$...$ & $1$  \\
+\hline
+     $t_2$ & $0$ & $0$  & $1$ &$0$ &$...$ & $5$  \\
+\hline
+     $t_3$ & $4$ & $0$  & $2$ &$2$ &$...$ & $0$  \\
+\hline
+     $t_4$ & $0$ & $3$  & $0$ &$0$ &$...$ & $2$  \\
+\hline
+     $...$ & $...$ & ...  & $...$ &$...$ &$...$ & $...$  \\
+\hline
+     $t_i$ & $0$ & $0$  & $3$ &$1$ &$...$ & $0$  \\
+\hline
+\end{tabular}
+\label{ff}
+\end{center}
+\end{table}
+Table \ref{ff} shows the feature space for our system. Our feature space ($F[][]$) is a two dimensional ($i\times j$) array with $i$ rows and $j$ columns.
+Here rows represents the texts $t_1, t_2, t_3, ..., t_i$ available in the corpus and columns represents total number unique words $w_1, w_2, w_3, ....., w_j$ in the corpus. Each cell of the array represents the frequency ($f_{ij}$) of a specific word $w_j$ occurs in a specific text $t_i$. Each row of the feature matrix represent features $F[][] =\{F[1], F[2], F[3], ... ,F[n]\} $ for the texts of the dataset. 
+
+\subsection{\textbf{Classification Algorithm}}
+It is most important part of our whole system. By using extracted features $F[1], F[2], F[3], ... ,F[n]$ and applying a suitable learning algorithm we train our model to classify texts as suspicious $C_s$ and non suspicious $C_{ns}$. Mainly logistic regression is used to implement the system and other algorithms are applied to establish comparison. 
+
+\vspace{0.3cm}
 \textbf{Naive Bayes}\cite{yoo2015classification} can be defined as Bayes theorem with a conditional independency assumption that all variables $A_{1},A_{2},...,A_{n}$ in a given category $C$ are conditionally independent with each other given $C$. 
 According to Bayes rule for a text document $(T)$ and class $(C)$ we can write,
 \begin{equation}
     P(C|T) = \frac{P(T|C)P(C)}{P(T)}
 \end{equation}
-The class we are looking for to assign this document is out of all classes the one that maximizes the probability of that class given the document.
-\begin{equation}\label{eq:11}
- \begin{aligned}
-     C_{MAP} & = argmax P(C|T) \\     & = argmax \frac{P(T|C)P(C)}{P(T)}
-\end{aligned}
-\end{equation}
-So final equation for Naive Bayes Classifier is,
+Final equation for Naive Bayes classifier is,
 \begin{equation}
      C_{MAP} = argmax P(X_{1},X_{2},...,X_{n}|C)P(C)
 \end{equation}
 \vspace{0.1cm}
 
-\textbf{SVM}\cite{wei2012text} analyze data used for classification and regression analysis. SVM can perform linear classification as well as non-linear classification using kernel trick. For linear classification cost function can be written as,
-\begin{equation}
-    \label{cost_function_svm}
-    \frac{1}{n}\sum_{i=1}^{n}\max{(0,1-y_{i}(w.x_{i}-b))} + \lambda (\lVert \mathbf{w} \rVert)^2
-\end{equation}
-The parameter $\lambda $ in above equation determines the trade-off between increasing the margin-size and ensuring that the samples lie on the correct side of the margin.
-
-For non-linear classification with SVM kernel trick is used. Some common kernel tricks used in machine learning are,
-\begin{itemize}
-    \item Gaussian radial basis function:
-    \begin{equation}
-         k(x_{i}, x_{j}) = \exp{(-\gamma(\lVert \mathbf{x_{i}-x_{j}} \rVert)^2)}
-    \end{equation}
-    \item Polynomial Kernel (homogeneous):
-    \begin{equation}
-        k(x_{i}, x_{j}) = (x_{i}\cdot x_{j})^d
-    \end{equation}
-     \item Polynomial Kernel (inhomogeneous):
-     \begin{equation}
-         k(x_{i}, x_{j}) = (x_{i}\cdot x_{j}+1)^d
-     \end{equation}
-\end{itemize}
-\vspace{0.1cm}
-
-A \textbf{Decision Tree}\cite{chavan2014survey} has two types of nodes one is external and another is internal. Decision classes are represented by external node of a decision tree. Internal nodes corresponds to attribute which are used for making decision by decision tree algorithm. Decision tree is simple to build and as it is a inductive algorithm it can be interpreted easily. Entropy is used to calculate the homogeneity of a sample. To build a decision tree, we need to calculate two types of entropy using as follows,
-\begin{enumerate}
-    \item Entropy using one attribute :
-    \begin{equation}
-         E(S) = \sum_{i=1}^{c}-P_i \log_2P_i
-    \end{equation}
-    \item Entropy using two attributes :
-    \begin{equation}
-        E(S) = \sum_{c\epsilon X}{}P(C)E(C) 
-    \end{equation}
-    
-\end{enumerate}
-
-
-\textbf{Logistic Regression}\cite{sharma2015active} is a binary classification model that predicts a binary outcome based on some features. The output of logistic regression depends on logistic function. The definition of logistic function or hypothesis function is,
+\textbf{Logistic Regression}\cite{sharma2015active} is a binary classification model that predicts a binary outcome based on some features. The output of logistic regression depends on logistic function. The logistic function is a sigmoid function, which takes any real input and outputs a value between zero and one. The definition of logistic function or hypothesis function is,
 \begin{equation}
     h_{\theta}(x) =  \frac{1}{1+\exp({-\theta^T x})}
 \end{equation}
@@ -96,31 +110,20 @@ Here,\\
 $m = $ Number of training examples.\\
 $h_{\theta}(x^{i}) = $ Hypothesis function of $i_{th}$ training example\\
 $y^i = $ Input label of $i_{th}$ training example.
+\vspace{0.1cm}
+\par
+For binary logistic regression selecting
+the threshold value is an important task, everything below threshold will considered as 0 or negative otherwise it will be 1 or positive.
 
 \vspace{0.3cm}
+\textbf{SVM}\cite{wei2012text} analyze data used for classification and regression analysis. SVM can perform linear classification as well as non-linear classification using kernel trick.
 
+\vspace{0.3cm}
 \textbf{KNN}\cite{harisinghaney2014text} is a non-parametric method used for
-classification and regression. K nearest neighbors is a simple algorithm that stores all available cases and classifies new cases based on a similarity measure (e.g., distance functions). Most commonly used three different distance function of K-NN are,
+classification and regression. K nearest neighbors is a simple algorithm that stores all available cases and classifies new cases based on a similarity measure (e.g., distance functions).
 
-\begin{enumerate}
-    \item Euclidean distance function :
-    \begin{equation}
-        \sqrt{\sum_{i=1}^{k}(x_i-y_i)^2}
-    \end{equation}
-    \item Manhattan distance function :
-    \begin{equation}
-         \sum_{i=1}^{k}\abs{(x_i-y_i)}
-    \end{equation}
-    \item Minkowski distance function :
-    \begin{equation}
-        ({\sum_{i=1}^{k}(\abs{x_i-y_i})^q)})^\frac{1}{q}
-    \end{equation}
-    
-\end{enumerate}
-All three distance measures are only valid for continuous variables.
-
-\subsubsection{\textbf{Saving the Model}}
-The result of the training phase is used in testing phase. The result is saved as a model which contains knowledge for classifying a new text document into suspicious or non suspicious category.
+\vspace{0.3cm}
+A \textbf{Decision Tree}\cite{chavan2014survey} has two types of nodes one is external and another is internal. Decision classes are represented by external node of a decision tree. Internal nodes corresponds to attribute which are used for making decision by decision tree algorithm. Decision tree is simple to build and as it is a inductive algorithm it can be interpreted easily. Entropy is used to calculate the homogeneity of a sample.
 
 \subsection{\textbf{Testing Phase}}
-Testing is the most important phase for any machine learning model. Classification accuracy of the text classifier is calculated in testing phase. In our system testing phase is quite similar as training phase but in this part our learned classifier model is used for predicting. Sample texts are taken to test the system. After processing, using feature extraction methods features are extracted from the texts. Our classifier model use this features to classify a text as suspicious and non suspicious.
+Testing is the most important phase for any machine learning model. Classification accuracy of the text classifier is calculated in testing phase. In our system testing phase is quite similar as training phase but in this part our learned classifier model is used for predicting. A test set $TS =\{ts_1, ts_2, ts_3, ..., ts_l\}$ is built to test the system which has $l$ text document. Sample texts are taken to test the system. After processing, using feature extraction methods features ($F[][]=\{F[1], F[2], F[3], ... ,F[l]\}$) are extracted from the testing texts $ts_1, ts_2, ts_3, ..., ts_l$. Our trained classifier model use this features to classify a text as suspicious ($C_s$) and non suspicious ($C_{ns}$).
