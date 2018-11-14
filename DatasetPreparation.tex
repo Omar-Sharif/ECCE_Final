@@ -1,5 +1,5 @@
-\section{\textbf{Experiments}}
-For the successful implementation of any machine learning algorithm dataset is the key. It was a very challenging task for us to build a corpus which contains a large amount of suspicious and non suspicious text. We have collected non suspicious data from a pre-build corpus\cite{banglacorpus}, thanks to them. Suspicious data are collected from different online and offline resources.% Data stored in .txt format.
+\section{\textbf{Dataset Preparation}}
+For the successful implementation of any machine learning algorithm dataset is the key. As Bengali is a low resource language it was a very challenging task for us to build a corpus which contains a large amount of suspicious and non suspicious text. We have collected non suspicious data from a pre-build corpus\cite{banglacorpus}, thanks to them. Suspicious data are collected from different online and offline resources.% Data stored in .txt format.
 \par \vspace{0.3cm} 
 We mark a text as suspicious if it has one of the following features,
 \begin{itemize}
@@ -17,21 +17,27 @@ We mark a text as suspicious if it has one of the following features,
 \begin{table}[h!]
 \begin{center}
 \caption{Data Summary}
-\begin{tabular}{|m{4.8cm} | m{3cm}|}
+\begin{tabular}{||m{5.8cm} || m{2cm}||}
 \hline
      Number of training documents & 1500 \\
 \hline
+    Number of training sentences & 6744\\
+\hline
+    Number of training words & 26973\\
+\hline
+    Total unique words in training set & 3250\\
+\hline
+\hline
      Number of testing documents & 500 \\
 \hline
-     Number of sentences & 8991\\
+     Number of testing sentences & 2247\\
 \hline 
-     Number of words & 35964\\
+     Number of testing words & 8991\\
 \hline 
-     Total unique words & 4295\\
+     Total unique words in test set & 1045\\
 \hline
 \end{tabular}
 \label{data}
 \end{center}
 \end{table}
-
 In order to classify the texts, we have fed our collected documents to our classifier model. As dataset is collected manually it may have some inconsistency.
