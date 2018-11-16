@@ -1,10 +1,10 @@
 \section{\textbf{Experimental Results}}
-Table \ref{AE} represents accuracy and error rate of different classification algorithm on our dataset.
+Our system is implemented with logistic regression, naive Bayes, SVM,  KNN and decision tree classification algorithms. Table \ref{AE} represents accuracy and error rate of these algorithms on our dataset.
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h!]
 \begin{center}
 \caption{Evaluation Summary}
-\begin{tabular}{|m{4.5cm} | m{1.6cm}| m{1.6cm}|}
+\begin{tabular}{||m{4.5cm} | m{1.6cm}| m{1.6cm}||}
 \hline
      Classification Algorithm & Accuracy  & Error  \\
 \hline
@@ -25,12 +25,12 @@ Table \ref{AE} represents accuracy and error rate of different classification al
 \end{center}
 \end{table}
 \par
-Table \ref{prr} shows the precision, recall and $F_1$ score of different classification algorithm used in our model.
+Table \ref{prr} shows the precision, recall and $F_1$ score of different classification algorithms used in our model.
 
 \begin{table}[h!]
 \begin{center}
 \caption{Performance Comparison}
-\begin{tabular}{|m{3.6cm} | m{1.25cm}| m{1.2cm}| m{1.3cm}|}
+\begin{tabular}{||m{3.6cm} | m{1.25cm}| m{1.2cm}| m{1.3cm}||}
 \hline
      Classification Algorithm & Precision & Recall & $F_1$ score \\
 \hline
@@ -51,12 +51,14 @@ Table \ref{prr} shows the precision, recall and $F_1$ score of different classif
 \end{center}
 \end{table}
 
-For all of the algorithms we use similar number of training and test documents. From table \ref{AE} and \ref{prr}, we can see that Logistic Regression and Support Vector Machine algorithm's are performing up to the mark on our dataset. Naive Bayes and Decision tree also doing really well. But accuracy of K-nearest neighbour is really poor compare to other algorithms. 
+For all of the algorithms we used similar number of training and test documents. From table \ref{AE} and \ref{prr}, we can see that logistic regression and support vector machine algorithms are performing up to the mark on our dataset. Naive Bayes and decision tree also doing really well. But accuracy of K-nearest neighbour is really poor compared to other algorithms. 
 
-Now, we will learn about classification report, Precision Recall curve and Receiver operating characteristic's (ROC) curve of  all of this algorithms. Classification report gives us precision, recall and $F_1$ score of each category which is really helpful to analyze the algorithm.
-\subsection{\textbf{Naive Bayes Classifier}}
-Table \ref{NBC} shows the classification report and \textbf{Fig.} \ref{prrn} shows Precision-Recall and ROC curve for Naive Bayes classifier.  .
-\renewcommand{\arraystretch}{1.2}
+Now, we will learn about classification report, precision-recall curve and receiver operating characteristic's (ROC) curve of this algorithms. Classification report gives us precision, recall and $F_1$ score of each category which is really helpful to analyze the algorithm
+and find out shortcomings of the algorithms.
+\par
+\textbf{Table} \ref{NBC} to \textbf{Table} \ref{tdct} represents classification report and \textbf{Fig.} \ref{prrn} to \textbf{Fig.} \ref{fdct} shows precision-recall and ROC curve of all algorithms we used in our system.
+
+\renewcommand{\arraystretch}{1.1}
 \begin{table}[h!]
 \begin{center}
 \caption{Classification Report (Naive Bayes)}
@@ -74,19 +76,6 @@ Table \ref{NBC} shows the classification report and \textbf{Fig.} \ref{prrn} sho
 \label{NBC}
 \end{center}
 \end{table}
-
-\begin{figure}[H]
-\centering
-\subcaptionbox{Precision Recall}{\includegraphics[scale=0.29]{Figures/PRN.jpg}}%
-\hfill % <-- Seperation
-\subcaptionbox{ROC}{\includegraphics[scale =0.29]{Figures/ROCN.jpg}}%
-\caption{Result of Naive Bayes Classifier}
-\label{prrn}
-\end{figure}
-
-
-\subsection{\textbf{SVM (Linear Kernel)}}
-Table \ref{SVML} shows the classification report and \textbf{Fig.} \ref{slk} shows Precision-Recall and ROC curve for Support Vector Machine with linear kernel.
 
 \begin{table}[h!]
 \begin{center}
@@ -106,18 +95,6 @@ Table \ref{SVML} shows the classification report and \textbf{Fig.} \ref{slk} sho
 \end{center}
 \end{table}
 
-\begin{figure}[H]
-\centering
-\subcaptionbox{Precision Recall}{\includegraphics[scale=0.29]{Figures/PRSL.jpg}}%
-\hfill % <-- Seperation
-\subcaptionbox{ROC}{\includegraphics[scale =0.29]{Figures/ROCSL.jpg}}%
-\caption{Result of SVM (Linear Kernel)}
-\label{slk}
-\end{figure}
-
-\subsection{\textbf{SVM (RBF Kernel)}}
-Results of Support Vector Machine with RBF kernel are shown in table \ref{SVMR} and \textbf{Fig.} \ref{svr}.
-\renewcommand{\arraystretch}{1.1}
 \begin{table}[h!]
 \begin{center}
 \caption{Classification Report (SVM RBF Kernel)}
@@ -135,18 +112,6 @@ Results of Support Vector Machine with RBF kernel are shown in table \ref{SVMR} 
 \label{SVMR}
 \end{center}
 \end{table}
-
-\begin{figure}[H]
-\centering
-\subcaptionbox{Precision Recall}{\includegraphics[scale=0.29]{Figures/PRSR.jpg}}%
-\hfill % <-- Seperation
-\subcaptionbox{ROC}{\includegraphics[scale =0.29]{Figures/ROCSR.jpg}}%
-\caption{Result of SVM (RBF Kernel)}
-\label{svr}
-\end{figure}
-
-\subsection{\textbf{Logistic Regression}}
-Results of Logistic Regression classifier are shown in table \ref{lr} and \textbf{Fig.} \ref{flr}.
 
 \begin{table}[h!]
 \begin{center}
@@ -166,19 +131,6 @@ Results of Logistic Regression classifier are shown in table \ref{lr} and \textb
 \end{center}
 \end{table}
 
-\begin{figure}[H]
-\centering
-\subcaptionbox{Precision Recall}{\includegraphics[scale=0.29]{Figures/PRLR.jpg}}%
-\hfill % <-- Seperation
-\subcaptionbox{ROC}{\includegraphics[scale =0.29]{Figures/ROCLR.jpg}}%
-\caption{Result of Logistic Regression}
-\label{flr}
-\end{figure}
-
-
-
-\subsection{\textbf{K-Nearest Neighbor}}
-\renewcommand{\arraystretch}{1}
 \begin{table}[h!]
 \begin{center}
 \caption{Classification Report (K-Nearest Neighbor)}
@@ -196,20 +148,6 @@ Results of Logistic Regression classifier are shown in table \ref{lr} and \textb
 \label{tknn}
 \end{center}
 \end{table}
-
-
-\begin{figure}[H]
-\centering
-\subcaptionbox{Precision Recall}{\includegraphics[scale=0.29]{Figures/PRKNN.jpg}}%
-\hfill % <-- Seperation
-\subcaptionbox{ROC}{\includegraphics[scale =0.29]{Figures/ROCKNN.jpg}}%
-\caption{Result of K-Nearest Neighbor}
-\label{fknn}
-\end{figure}
-
-\subsection{\textbf{Decision Tree}}
-
-Results of Decision Tree classifier are shown in table \ref{tdct} and \textbf{Fig.} \ref{fdct}.
 
 \begin{table}[h!]
 \begin{center}
@@ -231,9 +169,62 @@ Results of Decision Tree classifier are shown in table \ref{tdct} and \textbf{Fi
 
 \begin{figure}[H]
 \centering
-\subcaptionbox{Precision Recall}{\includegraphics[scale=0.29]{Figures/PRDCT.jpg}}%
+\subcaptionbox{precision-recall}{\includegraphics[scale=0.29]{Figures/PRN.jpg}}%
+\hfill % <-- Seperation
+\subcaptionbox{ROC}{\includegraphics[scale =0.29]{Figures/ROCN.jpg}}%
+\caption{Result of Naive Bayes Classifier}
+\label{prrn}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subcaptionbox{precision-recall}{\includegraphics[scale=0.29]{Figures/PRSL.jpg}}%
+\hfill % <-- Seperation
+\subcaptionbox{ROC}{\includegraphics[scale =0.29]{Figures/ROCSL.jpg}}%
+\caption{Result of SVM (Linear Kernel)}
+\label{slk}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subcaptionbox{precision-recall}{\includegraphics[scale=0.29]{Figures/PRSR.jpg}}%
+\hfill % <-- Seperation
+\subcaptionbox{ROC}{\includegraphics[scale =0.29]{Figures/ROCSR.jpg}}%
+\caption{Result of SVM (RBF Kernel)}
+\label{svr}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subcaptionbox{precision-recall}{\includegraphics[scale=0.29]{Figures/PRLR.jpg}}%
+\hfill % <-- Seperation
+\subcaptionbox{ROC}{\includegraphics[scale =0.29]{Figures/ROCLR.jpg}}%
+\caption{Result of Logistic Regression}
+\label{flr}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subcaptionbox{precision-recall}{\includegraphics[scale=0.29]{Figures/PRKNN.jpg}}%
+\hfill % <-- Seperation
+\subcaptionbox{ROC}{\includegraphics[scale =0.29]{Figures/ROCKNN.jpg}}%
+\caption{Result of K-Nearest Neighbor}
+\label{fknn}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subcaptionbox{precision-recall}{\includegraphics[scale=0.29]{Figures/PRDCT.jpg}}%
 \hfill % <-- Seperation
 \subcaptionbox{ROC}{\includegraphics[scale =0.29]{Figures/ROCDCT.jpg}}%
 \caption{Result of Decision Tree}
 \label{fdct}
+\end{figure}
+
+\textbf{Fig.} \ref{fig:out} shows sample input and corresponding output in our system.
+\begin{figure}[h!]
+\centering
+  \includegraphics[height=6.8cm, width=8.8cm]{Figures/output.PNG}
+  \caption{ Output in System Environment}
+  \label{fig:out}
 \end{figure}
