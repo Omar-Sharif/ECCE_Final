@@ -67,7 +67,7 @@ Here rows represents the texts $t_1, t_2, t_3, ..., t_i$ available in the corpus
 It is the most important part of our whole system. By using extracted features $F[1], F[2], F[3], ... ,F[n]$ and applying a suitable learning algorithm we train our model to classify texts as suspicious $C_s$ and non suspicious $C_{ns}$. Mainly logistic regression is used to implement the system and other algorithms are applied to establish comparison. 
 \vspace{0.3cm}
 
-\textbf{Logistic Regression}\cite{sharma2015active} is a binary classification model that predicts a binary outcome based on some features. The output of logistic regression depends on logistic function. The logistic function is a sigmoid function, which takes any real input and outputs a value between zero and one.This function ensures the output of our model does not become less than zero and greater than one. The definition of logistic function or hypothesis function is,
+\textbf{Logistic Regression} \cite{sharma2015active} is a binary classification model that predicts a binary outcome based on some features. The output of logistic regression depends on logistic function. The logistic function is a sigmoid function, which takes any real input and outputs a value between zero and one.This function ensures the output of our model does not become less than zero and greater than one. The definition of logistic function or hypothesis function is,
 \begin{equation}
     h_{\theta}(x) =  \frac{1}{1+\exp({-\theta^T x})}
 \end{equation}
@@ -98,7 +98,7 @@ the threshold value is an important task, everything below threshold will be con
 
 
 \vspace{0.3cm}
-\textbf{Naive Bayes}\cite{yoo2015classification} can be defined as Bayes theorem with a conditional independency assumption that all variables $A_{1},A_{2},...,A_{n}$ in a given category $C$ are conditionally independent with each other given $C$. 
+\textbf{Naive Bayes} \cite{yoo2015classification} can be defined as Bayes theorem with a conditional independency assumption that all variables $A_{1},A_{2},...,A_{n}$ in a given category $C$ are conditionally independent with each other given $C$. 
 According to Bayes rule for a text document $(T)$ and class $(C)$ we can write,
 \begin{equation}
     P(C|T) = \frac{P(T|C)P(C)}{P(T)}
